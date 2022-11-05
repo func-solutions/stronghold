@@ -14,7 +14,7 @@ Stronghold.activateBoosters(GlobalBooster.builder()
   .owner(player.uuid)
   .duration(7, TimeUnit.HOURS)
   .multiplier(2.0)
-  .stackable(false)
+  .maxStackable(10)
   .thanks((player, owner) -> {
     player.sendMessage("Молодец что поблагодарил!")
     owner?.giveMoney(10.0)
