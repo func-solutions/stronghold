@@ -21,7 +21,8 @@ class BoosterGlobal : Booster() {
             model.ownerName = player.displayName
             model.owner = player.uniqueId
         }
-        fun ownerUuid(owner: UUID) = apply { model.owner = owner }
+        fun owner(name: String) = apply { model.ownerName = name }
+        fun owner(owner: UUID) = apply { model.owner = owner }
         fun duration(duration: Long) = apply { model.duration = duration }
         fun duration(duration: Long, unit: TimeUnit) = apply { model.duration = unit.toMillis(duration) }
         fun timestamp(timestamp: Long) = apply { model.timestamp = timestamp }
