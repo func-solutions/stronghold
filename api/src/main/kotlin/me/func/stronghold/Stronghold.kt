@@ -7,10 +7,13 @@ import me.func.stronghold.controller.BoosterController
 import me.func.stronghold.controller.DefaultBoosterController
 import me.func.stronghold.data.Booster
 import me.func.stronghold.listener.JoinEventListener
+import me.func.stronghold.timer.AlertScheduler
+import me.func.stronghold.timer.DefaultAlertScheduler
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.UUID
 import java.util.function.BiConsumer
+import java.util.function.Consumer
 
 object Stronghold {
 
@@ -20,8 +23,11 @@ object Stronghold {
     var namespace: String = "default"
     var client: BoosterClient = DefaultBoosterClient()
     var thanks: BiConsumer<Player?, Player?>? = null
+    var onExpire: Consumer<List<Booster>>? = null
+    var onActivate: Consumer<List<Booster>>? = null
 
     val controller: BoosterController = DefaultBoosterController()
+    val alertScheduler: AlertScheduler = DefaultAlertScheduler()
 
     @JvmStatic
     fun namespace(namespace: String) {
@@ -35,12 +41,24 @@ object Stronghold {
         controller.createShowFunction()
         controller.thanks()
 
+        alertScheduler.run()
+
         listener(JoinEventListener)
     }
 
     @JvmStatic
     fun addThanksConsumer(onThanks: BiConsumer<Player?, Player?>) {
         thanks = onThanks
+    }
+
+    @JvmStatic
+    fun onExpire(expire: Consumer<List<Booster>>) {
+        onExpire = expire
+    }
+
+    @JvmStatic
+    fun onActivate(activate: Consumer<List<Booster>>) {
+        onActivate = activate
     }
 
     @JvmStatic

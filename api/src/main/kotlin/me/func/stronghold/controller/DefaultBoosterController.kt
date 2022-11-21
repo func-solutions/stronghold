@@ -54,8 +54,11 @@ class DefaultBoosterController : BoosterController {
             msg.boosters.forEach {
                 Stronghold.boosters.getOrPut(it.uuid) { -> it }
             }
+
             updateClients()
             clearCache()
+
+            Stronghold.onActivate?.accept(msg.boosters)
 
             msg.boosters.forEachIndexed { index, booster ->
 
@@ -85,6 +88,8 @@ class DefaultBoosterController : BoosterController {
             toRemove.forEach { Stronghold.boosters.remove(it.uuid) }
             updateClients()
             clearCache()
+
+            Stronghold.onExpire?.accept(toRemove)
 
             toRemove.forEachIndexed { index, booster ->
 

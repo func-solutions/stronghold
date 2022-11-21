@@ -142,10 +142,8 @@ fun main() {
             println("Sended thanks back!")
 
             CoroutineScope(Dispatchers.IO).launch {
-                val realmId = withContext(Dispatchers.IO) {
-                    locateService.findPlayers(listOf(booster.owner)).get(5, TimeUnit.SECONDS)
-                }
 
+                val realmId = locateService.findPlayers(listOf(booster.owner))[5, TimeUnit.SECONDS]
                 val first = realmId.firstOrNull() ?: return@launch
 
                 // если игроки на одном сервере

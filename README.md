@@ -24,15 +24,13 @@ dependencies {
     implementation 'me.func:visual-driver:3.2.8.RELEASE'
     
     // сама библиотека
-    implementation 'me.func:stronghold:1.0.2.RELEASE'
+    implementation 'me.func:stronghold:1.1.1.RELEASE'
 }
 ```
 
 <h2>Чего не хватает?</h2>
 
-1. Периодических сообщений о активных бустерах
-2. Хранения бустеров в БД (для отказоустойчивости)
-3. Нового дизайна
+1. Хранения бустеров в БД (для отказоустойчивости)
 
 <h2>Примеры</h2>
 
