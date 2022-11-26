@@ -11,7 +11,7 @@ plugins {
 
 allprojects {
     group = "me.func"
-    project.version = "1.1.1.RELEASE"
+    project.version = "1.1.2.RELEASE"
 }
 
 subprojects {

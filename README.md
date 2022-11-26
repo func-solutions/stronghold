@@ -24,7 +24,7 @@ dependencies {
     implementation 'me.func:visual-driver:3.2.8.RELEASE'
     
     // сама библиотека
-    implementation 'me.func:stronghold:1.1.1.RELEASE'
+    implementation 'me.func:stronghold:1.1.2.RELEASE'
 }
 ```
 

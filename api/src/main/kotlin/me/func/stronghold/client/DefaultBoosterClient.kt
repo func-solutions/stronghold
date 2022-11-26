@@ -15,17 +15,10 @@ class DefaultBoosterClient : BoosterClient {
     private var connected = false
 
     init {
-        Bukkit.getScheduler().runTaskTimer(Stronghold.provided, {
-            if (!connected) {
-                connect()
-                return@runTaskTimer
-            }
-        }, 20, 20)
+        Bukkit.getScheduler().runTaskTimer(Stronghold.provided, { connect() }, 20, 20)
     }
 
     override fun connect() {
-
-        if (connected) return
 
         ISocketClient.get().writeAndAwaitResponse<BoosterNamespacePackage>(
             BoosterNamespacePackage(Stronghold.namespace)
